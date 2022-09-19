@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html onmousemove="coordenadas(event)" onmousedown="btnPressed(event)">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Eventos 4 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Events Exercici 4</h1>
+        
+        <div><strong>Coordenadas:</strong> <p id="resultado1"></p></div>
+        <div><strong>Boton Pulsado:</strong> <p id="resultado2"></p></div>
+
+        <script language="javascript">
+            function coordenadas(event) {
+                let x = event.screenX;
+                let y = event.screenY;
+                let coords = "X: " + x + ", Y: " + y
+                document.getElementById("resultado1").innerHTML = coords;
+            }
+            
+            function btnPressed(event) {
+                let btnPulsado = event.button;
+                let texto;
+                
+                if (btnPulsado == 0) {
+                    texto = "Has hecho click IZQUIERDO";
+                } else if (btnPulsado == 1) {
+                    texto = "Has movido el rodillo del raton";
+                } else if (btnPulsado == 2) {
+                    texto = "Has hecho click DERECHO";
+                } else {
+                    texto = "";
+                }
+                document.getElementById("resultado2").innerHTML = texto;
+            }
+        </script>
+
+    </body>
+</html>

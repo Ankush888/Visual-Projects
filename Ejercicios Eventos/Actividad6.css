@@ -1,0 +1,57 @@
+#input1{
+    position: absolute;
+    height: 10%;
+    width: 10%;
+}
+#input2{
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    left: 11.5%;
+}
+#input3{
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    left: 22.5%;
+}
+#input4{
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    top: 19.5%;
+}
+#input5{
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    top: 19.5%;
+    left: 11.5%;
+}
+#input6{
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    top: 19.5%;
+    left: 22.5%;
+}
+#input7{
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    top: 30.5%;
+}
+#input8{
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    top: 30.5%;
+    left: 11.5%;
+}
+#input9{
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    top: 30.5%;
+    left: 22.5%;
+}

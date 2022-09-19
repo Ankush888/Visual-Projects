@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Eventos 5 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Events Exercici 5</h1>
+        <h3>BOTONS</h3>
+        <div id="btns"></div>
+
+        <p id="resultado"></p>
+
+        <script language="javascript">
+            let resul = document.getElementById("btns");
+
+            for (var i = 0; i < 10; i++) {
+                let boton = document.createElement("button");
+                boton.style.cursor = "pointer";
+                boton.onclick = resultadoNumeros;
+
+                let textoBtn = document.createTextNode(i);
+
+                boton.appendChild(textoBtn);
+                resul.appendChild(boton);
+            }
+
+            let respuesta = document.getElementById("resultado");
+            function resultadoNumeros() {
+                respuesta.innerHTML += this.innerHTML;
+            }
+        </script>
+
+    </body>
+</html>

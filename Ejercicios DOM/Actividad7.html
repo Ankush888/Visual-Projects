@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Exercici DOM 7 - Ankuhs Bihal</title>
+    </head>
+    <body>
+        <h1>DWEC_DOM Exercici 7</h1>
+
+        <script>
+            let divPadre = document.createElement("div");
+            let losP;
+            let texto;
+
+            for (var i = 0; i < 20; i++) {
+                //  Aqui creamos los elementos:
+                losP = document.createElement("p");
+                texto = document.createTextNode("Esto es elemento <P>: " + (i + 1));
+
+                //  Aqui añadimos los elementos:
+                losP.appendChild(texto);
+                divPadre.appendChild(losP);
+                document.body.appendChild(divPadre);
+
+                //  Aqui revertimos los elementos:
+                divPadre.insertBefore(divPadre.childNodes[i], divPadre.firstChild);
+            }
+        </script>
+
+    </body>
+</html>

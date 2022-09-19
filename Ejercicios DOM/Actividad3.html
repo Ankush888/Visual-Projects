@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Exercici DOM 3 - Ankuhs Bihal</title>
+        <style>
+            .oculto { display: none; }
+            .visible { display: inline; }
+        </style>
+    </head>
+
+
+    <body>
+        <h1>DWEC_DOM Exercici 3</h1>
+
+        <p id="texto">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor, pede.
+            <span id="addicional" class="oculto">
+                Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque. Donec lacus neque, vehicula in, eleifend vitae, venenatis ac, felis. Donec arcu. Nam sed tortor nec ipsum aliquam ullamcorper. Duis accumsan metus eu urna. Aenean vitae enim. Integer lacus. Vestibulum venenatis erat eu odio. Praesent id metus.
+            </span>
+        </p>
+        <a id="enlace" href="#" onclick="mostra()">Seguir llegint</a>
+
+
+        <script>
+            function mostra() {
+                // Declaración de Variables:
+                var elemento;
+                var enlace;
+
+                elemento = document.getElementById("addicional");
+                elemento.className = "visible";
+
+                enlace = document.getElementById("enlace");
+                enlace.className = "oculto";
+            }
+        </script>
+
+    </body>
+</html>

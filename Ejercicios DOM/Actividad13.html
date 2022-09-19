@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio DOM 13 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_DOM Exercici 13</h1>
+
+        <div style="position:absolute;max-height:100%;max-width:100%;">
+            <p id="res" style="width:100%;height:100%;"></p>
+        </div>
+
+
+        <script>
+            var total = '';
+            var rand;
+            var rand2;
+            var rand3;
+            var r1, r2, r3;
+
+            for (var i = 0; i < 2000; i++) {
+                rand = Math.floor(Math.random() * 99);
+                rand2 = Math.floor(Math.random() * 99);
+                rand3 = Math.floor(Math.random() * 99);
+
+                r1 = Math.floor(Math.random() * 255);
+                r2 = Math.floor(Math.random() * 255);
+                r3 = Math.floor(Math.random() * 255);
+                total += '<div style="background-color:rgb(' + r1 + ',' + r2 + ',' + r3 + '); position:fixed;width:50px;height:50px;left:' + rand + '%;bottom: ' + rand2 + '%;"></div>'
+            }
+
+            document.getElementById('res').innerHTML = total;
+        </script>
+
+    </body>
+</html>

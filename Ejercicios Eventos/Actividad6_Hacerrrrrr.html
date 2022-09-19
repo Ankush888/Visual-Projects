@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Eventos 6 - Ankush Bihal</title>
+
+        <style>
+            .celda {
+                height: 50px;
+                width: 50px;
+                font-size: 80px;
+                text-align: center;
+                color: white;
+                background-color: #212529;
+                padding: 0px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>DWEC_Events Exercici 6</h1>
+        <h3>Juego 3 en Raya</h3>
+
+        <div class="container">
+                <a id="restart" class="btn btn-primary btn-lg" href="#" role="button">Restart</a>
+
+                <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <table id="tablero" class="table table-bordered text-center"
+                           style="width: 450px; height: 450px;">
+                        <tbody>
+                            <tr>
+                                <td id="cas1" class="celda"></td>
+                                <td id="cas2" class="celda"></td>
+                                <td id="cas3" class="celda"></td>
+                            </tr>
+                            <tr>
+                                <td id="cas4" class="celda"></td>
+                                <td id="cas5" class="celda"></td>
+                                <td id="cas6" class="celda"></td>
+                            </tr>
+                            <tr>
+                                <td id="cas7" class="celda"></td>
+                                <td id="cas8" class="celda"></td>
+                                <td id="cas9" class="celda"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px">
+                <div class="col d-flex justify-content-center">
+                    <h1 id="textWin" class="text-hide"></h1>
+                </div>
+            </div>
+        </div>
+        <script>
+
+
+            // Declaracion de constantes
+            const players = [["#0000cc", "X"], ["#cc0000", "O"]];
+            const colours = ["#212529", "#00cc00"]
+            // Declaracion de variables
+            var playerTurn = 0;
+            var playerCount = 0;
+            var btnRestart = document.querySelector("#restart");
+            var btnCeldas = document.querySelectorAll(".celda");
+
+            // Asociar eventos
+            btnRestart.addEventListener("click", restartGame)
+            for (var i = 0; i < btnCeldas.length; i++) {
+                btnCeldas[i].addEventListener("click", cambiarCelda);
+                btnCeldas[i].addEventListener("mouseover", overCelda);
+                btnCeldas[i].addEventListener("mouseout", outCelda);
+            }
+
+            // Funciones del juego
+            function overCelda(e) {
+                if (e.target.textContent == "") {
+                    e.target.style.backgroundColor = colours[1];
+                }
+            }
+
+            function outCelda(e) {
+                if (e.target.textContent == "") {
+                    e.target.style.backgroundColor = colours[0];
+                }
+            }
+
+            function cambiarCelda() {
+                if (this.textContent == "") {
+                    this.style.backgroundColor = players[playerTurn][0];
+                    this.textContent = players[playerTurn][1];
+                    playerTurn = playerTurn == 0 ? 1 : 0;
+                    playerCount++;
+                    checkWin();
+                }
+            }
+
+            function restartGame() {
+                playerTurn = 0;
+                playerCount = 0;
+                for (var i = 0; i < btnCeldas.length; i++) {
+                    btnCeldas[i].style.backgroundColor = colours[0];
+                    btnCeldas[i].textContent = "";
+                }
+                var txtWin = document.querySelector("#textWin");
+                txtWin.textContent = ""
+                txtWin.className = "text-hide";
+            }
+
+            function checkWin() {
+                var txtWin = document.querySelector("#textWin");
+                if (playerCount == 9) {
+                    txtWin.textContent = "Tablas!!!"
+                    txtWin.className = "";
+                }
+            }
+
+        </script>
+    </body>
+</html>

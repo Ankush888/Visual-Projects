@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Ejercicio 17 - Limitar número de caracteres en textarea</title>
+
+        <style type="text/css">
+            body {font-family: arial, helvetica;}
+        </style>
+
+        <script type="text/javascript">
+            function limita(elEvento, maximoCaracteres) {
+                var elemento = document.getElementById("texto");
+
+                // Obtener la tecla pulsada
+                var evento = elEvento || window.event;
+                var codigoCaracter = evento.charCode || evento.keyCode;
+                // Permitir utilizar las teclas con flecha horizontal
+                if (codigoCaracter == 37 || codigoCaracter == 39) {
+                    return true;
+                }
+
+                // Permitir borrar con la tecla Backspace y con la tecla Supr.
+                if (codigoCaracter == 8 || codigoCaracter == 46) {
+                    return true;
+                } else if (elemento.value.length >= maximoCaracteres) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            function actualizaInfo(maximoCaracteres) {
+                var elemento = document.getElementById("texto");
+                var info = document.getElementById("info");
+
+                if (elemento.value.length >= maximoCaracteres) {
+                    info.innerHTML = "Máximo " + maximoCaracteres + " caracteres";
+                } else {
+                    info.innerHTML = "Puedes escribir hasta " + (maximoCaracteres - elemento.value.length) + " caracteres adicionales";
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+
+        <div id="info">Máximo 100 caracteres</div>
+        <textarea id="texto" onkeypress="return limita(event, 100);" onkeyup="actualizaInfo(100)" rows="6" cols="30"></textarea>
+
+    </body>
+</html>
+
+
+
+7.2.5. Restringir los caracteres permitidos en un cuadro de texto
+
+En ocasiones, puede ser útil bloquear algunos caracteres determinados en un cuadro de texto. Si por ejemplo un cuadro de texto espera que se introduzca un número, puede ser interesante no permitir al usuario introducir ningún carácter que no sea numérico.
+
+Igualmente, en algunos casos puede ser útil impedir que el usuario introduzca números en un cuadro de texto. Utilizando el evento onkeypress y unas cuantas sentencias JavaScript, el problema se resuelve fácilmente:
+
+function permite(elEvento, permitidos) {
+  // Variables que definen los caracteres permitidos
+  var numeros = "0123456789";
+  var caracteres = " abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+  var numeros_caracteres = numeros + caracteres;
+  var teclas_especiales = [8, 37, 39, 46];
+  // 8 = BackSpace, 46 = Supr, 37 = flecha izquierda, 39 = flecha derecha
+
+
+  // Seleccionar los caracteres a partir del parámetro de la función
+  switch(permitidos) {
+    case 'num':
+      permitidos = numeros;
+      break;
+    case 'car':
+      permitidos = caracteres;
+      break;
+    case 'num_car':
+      permitidos = numeros_caracteres;
+      break;
+  }
+
+  // Obtener la tecla pulsada
+  var evento = elEvento || window.event;
+  var codigoCaracter = evento.charCode || evento.keyCode;
+  var caracter = String.fromCharCode(codigoCaracter);
+
+  // Comprobar si la tecla pulsada es alguna de las teclas especiales
+  // (teclas de borrado y flechas horizontales)
+  var tecla_especial = false;
+  for(var i in teclas_especiales) {
+    if(codigoCaracter == teclas_especiales[i]) {
+      tecla_especial = true;
+      break;
+    }
+  }
+
+  // Comprobar si la tecla pulsada se encuentra en los caracteres permitidos
+  // o si es una tecla especial
+  return permitidos.indexOf(caracter) != -1 || tecla_especial;
+}
+
+// Sólo números
+<input type="text" id="texto" onkeypress="return permite(event, 'num')" />
+
+// Sólo letras
+<input type="text" id="texto" onkeypress="return permite(event, 'car')" />
+
+// Sólo letras o números
+<input type="text" id="texto" onkeypress="return permite(event, 'num_car')" />

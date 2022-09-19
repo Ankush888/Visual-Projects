@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio DOM 14 - Ankush Bihal</title>
+        <style>
+            .exterior {
+                width: 60px;
+                height: 170px;
+                background-color: green;
+                border: 1px solid black;
+            }
+
+            .pal {
+                height: 140px;
+                width: 20px;
+                margin-left: 20px;
+            }
+
+            .ences, .apagat {
+                width: 50px;
+                height: 50px;
+                margin: 5px;
+                background-color: black;
+                border-radius: 25px;
+            }
+
+            #vermell.ences {
+                background-color: red;
+            }
+
+            #ambre.ences {
+                background-color: orange;
+            }
+
+            #verd.ences {
+                background-color: LawnGreen
+            }
+            button{
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <h1>DWEC_DOM Exercici 14</h1>
+
+        <button onclick="cambiar()">Canviar</button><br><br>
+        <div class="exterior">
+            <div id="vermell" class="apagat"></div>
+            <div id="ambre" class="apagat"></div>
+            <div id="verd" class="ences"></div>
+        </div>
+        <div class="pal exterior"></div> 
+
+
+        <script>
+            function cambiar() {
+                let elDiv = document.getElementsByTagName('div');
+
+                let verde = elDiv[3].getAttribute("class");
+                let ambar = elDiv[2].getAttribute("class");
+                let rojo = elDiv[1].getAttribute("class");
+
+                if (verde == "ences") {
+                    elDiv[3].setAttribute("class", "apagat");
+                    elDiv[2].setAttribute("class", "ences");
+
+                } else if (ambar == "ences") {
+                    elDiv[2].setAttribute("class", "apagat");
+                    elDiv[1].setAttribute("class", "ences");
+
+                } else if (rojo == "ences") {
+                    elDiv[1].setAttribute("class", "apagat");
+                    elDiv[3].setAttribute("class", "ences");
+                }
+            }
+        </script>
+
+    </body>
+</html>

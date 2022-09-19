@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio BOM 4.2 - Ankush Bihal</title>
+    </head>
+
+
+    <body onload="checkCookie()">
+        <h1>DWEC_BOM Exercici 4.2</h1>
+
+        <h3 id="resiltado"> </h3>
+
+        <br>
+        <a href="Actividad4_Page1.html">Torna a inici</a>
+
+        <script>
+            // Funcion de W3Schools para cojer la COOKIE de la Pagina:
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+
+            // Funcion de W3Schools para COMPROBAR si hay una cookie en
+            // la pagina o si no redirigir a la pagina de inicio:
+            function checkCookie() {
+                var username = getCookie("username");
+                var surname = getCookie("surname");
+
+                if (username != "" && surname != "") {
+                    document.getElementById("resiltado").innerHTML = username + " " + surname;
+                } else {
+                    window.location.href = "Actividad4_Page1.html";
+                }
+            }
+        </script>
+
+    </body>
+</html>

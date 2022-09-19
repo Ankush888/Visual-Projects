@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio BOM 1 - Ankush Bihal</title>
+        <style>
+
+        </style>
+    </head>
+
+
+    <body>
+        <h1>DWEC_BOM Exercici 1</h1>
+
+        <div>
+            <button onclick="abrirVentana()">Obrir finestra</button>
+            <button onclick="cerrarVentana()">Tancar finestra</button>
+            <button onclick="moverVentana()">Moure 10px a la dreta i abaix</button>
+        </div>
+
+        <br>
+        <div> 
+            <button onclick="moverPosicionVentana()">Moure a 100, 100</button>
+            <button onclick="aumentarVentana()">Augmentar 10</button>
+            <button onclick="aumentarDimencionesVentana()">Augmentar a 400x200</button>
+        </div>
+
+        <p><strong id="respuesta"></strong></p>
+        <p><strong id="respuesta2"></strong></p>
+
+        <script language="javascript">
+            var miWindow;
+
+            function abrirVentana() {
+                var r = confirm("Seguro que desea abrir una Ventana?");
+                if (r == true) {
+                    miWindow = window.open("", "_blank", "toolbar= no, scrollbars=no, resizable=no, top=500, left=500, width=200, height=80");
+                    miWindow.document.write("Bon dia tot lo dia!<br><br>");
+                    miWindow.document.write("<button onclick='window.close()'>TANCAR</button>");
+                } else {
+                    document.getElementById("respuesta").innerHTML = "Usted no ha querido abrir la Ventana.";
+                }
+            }
+
+            // ========================================================================
+            function cerrarVentana() {
+                if (miWindow == null) {
+                    document.getElementById("respuesta2").innerHTML = "ERROR!!! No hay ningua Ventana abierta.";
+                } else {
+                    miWindow.close();
+                }
+            }
+
+            // ========================================================================
+            function moverVentana() {
+                miWindow.moveBy(10, 10);
+                miWindow.focus();
+            }
+
+            // ========================================================================
+            function moverPosicionVentana() {
+                miWindow.moveTo(100, 100);
+                miWindow.focus();
+            }
+
+            // ========================================================================
+            function aumentarVentana() {
+                miWindow.resizeBy(10, 10);
+                miWindow.focus();
+            }
+
+            // ========================================================================
+            function aumentarDimencionesVentana() {
+                miWindow.resizeTo(400, 200);
+                miWindow.focus();
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Formularios 4 - Ankush Bihal</title>
+        <style>
+            #nombre, #email, #fecha, #contrato, #pass, #bot, #passR {
+                background-color: antiquewhite;
+            }
+
+            #errorPass, #errorPass1, #errorContrato {
+                color: red;
+            }
+        </style>
+
+
+    <body onclick="myFunction()">
+        <h1>DWEC_Formularis Exercici 4</h1>
+        <h3>REGISTRO</h3>
+
+
+        <form id="formu">
+            Nombre <input type="text" id="nombre">
+            <br><br>
+
+            Correo electrónico<input type="text" id="email"><label id="em"></label>
+            <br><br>
+
+            Móvil<input type="text" id="movil">
+            <br><br>
+
+            Fecha de nacimiento<input type="date" id="fecha"><label id="edad"></label>
+            <br><br>
+
+            Primer contrato<input type="date" id="contrato">
+            <label id="errorContrato"></label>
+            <br><br>
+
+            Contraseña<input type="password" id="pass">
+            <label id="errorPass1"></label>
+            <br><br>
+
+            Repetir contraseña<input type="password" id="passR">
+            <label id="errorPass"></label>
+            <br><br>
+
+            <h4>¿Cúal es tu hobbie?</h4>
+            <input type="checkbox" id="cbox1" name="gp1" onclick="limitarSelección(this, this.form)" value="musica">Música
+            <br>
+            <input type="checkbox" id="cbox2" name="gp1" onclick="limitarSelección(this, this.form)" value="leer">Leer
+            <br>
+            <input type="checkbox" id="cbox3" name="gp1" onclick="limitarSelección(this, this.form)" value="bucear">Bucear
+            <br>
+            <input type="checkbox" id="cbox4" name="gp1" onclick="limitarSelección(this, this.form)" value="caminar">Caminar
+            <br>
+            <input type="checkbox" id="cbox5" name="gp1" onclick="limitarSelección(this, this.form)" value="dibujar">Dibujar
+            <br>
+            <input type="checkbox" id="cbox6" name="gp1" onclick="limitarSelección(this, this.form)" value="juego">Jugar a videojuegos
+            <br>
+            <input type="checkbox" id="cbox7" name="gp1" onclick="limitarSelección(this, this.form)" value="cantar">Cantar
+            <br>
+            <input type="checkbox" id="cbox8" name="gp1" onclick="limitarSelección(this, this.form)" value="meditar">Meditar
+            <br>
+            <br>
+
+           
+            <input type="checkbox" id="box" onchange="validarRobot()"> No soy un robot
+            <label id="suma"></label>
+            <input type="number" id="bot" disabled>
+            <br><br>
+
+            <input type="checkbox" id="box2"> Acepto las condiciones
+            <br><br>
+            <input type="button" value="Crear cuenta" id="btn" onclick="validar()">
+        </form>
+
+        <script language="javascript">
+            window.onload = function () {
+                if (document.getElementById('fecha').value) {
+                    document.getElementById('contrato').disabled = false;
+                } else {
+                    document.getElementById('contrato').disabled = true;
+                }
+
+                if (document.getElementById('box2').checked) {
+                    document.getElementById('btn').disabled = false;
+                } else {
+                    document.getElementById('btn').disabled = true;
+                }
+            };
+
+
+            var num1 = Math.floor(Math.random() * 10) + 1;
+            var num2 = Math.floor(Math.random() * 10) + 1;
+            var total = num1 + num2;
+            let checkRobot = document.getElementById("box");
+            let inputRobot = document.getElementById("bot");
+            
+            function validarRobot() {
+                if (checkRobot.checked) {
+                    inputRobot.disabled = false;
+                    document.getElementById('suma').innerHTML = num1 + " + " + num2 + " = ";
+
+                } else {
+                    inputRobot.disabled = true;
+                    document.getElementById('suma').innerHTML = "";
+                }
+            }
+
+            textoArea.addEventListener('keyup', function (num1, num2, resul) {
+                let sumaHecha = n1 + n2;
+                if (sumaHecha === resul) {
+
+                }
+                texto1 = "Caràcteres Escritos: <strong>" + (textoArea.value.length + 1) + "</strong>";
+                document.getElementById("respuesta1").innerHTML = texto1;
+
+                //==================================================================
+                let text_length = textoArea.value.length;
+                let text_Restantes = maxCarateresPermitidos - text_length;
+                texto2 = "Caràcteres Restantes: <strong>" + text_Restantes + "</strong>";
+                document.getElementById("respuesta2").innerHTML = texto2;
+            });
+
+
+            //Funcion que carga la pagina
+            //==================================================================
+            function myFunction() {
+
+                if (document.getElementById('fecha').value) {
+                    document.getElementById('contrato').disabled = false;
+                } else {
+                    document.getElementById('contrato').disabled = true;
+                }
+
+                if (document.getElementById('box2').checked) {
+                    document.getElementById('btn').disabled = false;
+                } else {
+                    document.getElementById('btn').disabled = true;
+                }
+            }
+
+
+            //Funcion para limitar el grupo de 8 checkboxes
+            //==================================================================
+            function limitarSelección(casilla, form) {
+                var a = casilla.form.gp1[0].checked;
+                var b = casilla.form.gp1[1].checked;
+                var c = casilla.form.gp1[2].checked;
+                var d = casilla.form.gp1[3].checked;
+                var e = casilla.form.gp1[4].checked;
+
+                var contador = (a ? 1 : 0) + (b ? 1 : 0) + (c ? 1 : 0) + (d ? 1 : 0) + (e ? 1 : 0);
+
+                if (contador < 3) {
+                    alert("Tienes que escoger como mínimo 3 hobbies");
+                    casilla.checked = true;
+                }
+            }
+
+            //Funcion para calcular la edad
+            //==================================================================
+            function Edad(FechaNacimiento) {
+                var fechaNace = new Date(FechaNacimiento);
+                var fechaActual = new Date();
+                var mes = fechaActual.getMonth();
+                var dia = fechaActual.getDate();
+                var año = fechaActual.getFullYear();
+
+                fechaActual.setDate(dia);
+                fechaActual.setMonth(mes);
+                fechaActual.setFullYear(año);
+
+                var edad = Math.floor(((fechaActual - fechaNace) / (1000 * 60 * 60 * 24) / 365));
+                return edad;
+            }
+
+
+            //==================================================================
+            //Funcion para calcular la edad con el contrato
+            function edadContrato(FechaContrato) {
+
+                var edad = document.getElementById('fecha').value;
+                var fechaCont = new Date(FechaContrato);
+                var fechaNacimiento = new Date(edad);
+                var mes = fechaCont.getMonth();
+                var dia = fechaCont.getDate();
+                var año = fechaCont.getFullYear();
+
+                fechaCont.setDate(dia);
+                fechaCont.setMonth(mes);
+                fechaCont.setFullYear(año);
+
+                edad2 = Math.floor(((fechaCont - fechaNacimiento) / (1000 * 60 * 60 * 24) / 365));
+                return edad2;
+            }
+
+            //==================================================================
+            //Funcion que se ejecuta cuando se valida el formulario
+            function validar() {
+
+                var fecha = document.getElementById('fecha').value;
+                var edad1 = Edad(fecha);
+
+                var fecCont = document.getElementById('contrato').value;
+                var edad2 = edadContrato(fecCont);
+
+                document.getElementById("edad").innerHTML = " " + edad1 + " años.";
+
+                var email = document.getElementById('email').value;
+                var correo = validarEmail(email);
+                var pas1 = document.getElementById('pass').value;
+                var rep = document.getElementById('passR').value;
+
+                if (pas1 === rep) {
+                    document.getElementById('errorPass').innerHTML = " CORRECTO!";
+                } else {
+                    document.getElementById('errorPass').innerHTML = " INCORRECTO!";
+                }
+
+                var contra = validarContra();
+                var telefono = validarNumeroTelefono();
+
+                if (edad2 < 16) {
+                    document.getElementById('errorContrato').innerHTML = " ERROR: Tenías " + edad2 + " años!";
+                }
+            }
+            
+            
+            //==================================================================
+            //Funcion para validar el email
+            function validarEmail() {
+                var validarCorreo = document.getElementById('email').value;
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(validarCorreo)) {
+                    document.getElementById('em').innerHTML = " La dirección de email " + validarCorreo + " es correcta.";
+                } else {
+                    document.getElementById('em').innerHTML = " La dirección de email es incorrecta";
+                }
+            }
+
+            ///\(\+\d{2,3}\)\d{9}g
+
+            //==================================================================
+            //Funcion para validar el Contraseña
+            function validarContra() {
+                var validarContra = document.getElementById('pass').value;
+
+                if (/^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})\S{8,}$/.test(validarContra)) {
+                    document.getElementById('errorPass1').innerHTML = " Buena contraseña!";
+                } else {
+                    document.getElementById('errorPass1').innerHTML = " ERROR: Tiene que tener almenos 1 digito!";
+                }
+            }
+
+
+            //==================================================================
+            //Funcion para validar el Telefóno:
+            function validarNumeroTelefono() {
+                var telefono = document.getElementById('movil');
+
+                if (/^([0-9]{3})+( ){0,1}([0-9]{3})+( ){0,1}([0-9]{3})$/i.test(telefono.value)) {
+                    telefono.style.backgroundColor = "white";
+                } else {
+                    telefono.style.backgroundColor = "red";
+                }
+            }
+        </script>
+
+    </body>
+</html>

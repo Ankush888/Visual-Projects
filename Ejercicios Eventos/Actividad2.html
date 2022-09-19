@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Eventos 2 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Events Exercici 2</h1>
+        <h3>Gestor de Tasques</h3>
+
+        <p> Nova tasca: 
+            <input id="userTexto" type="text">
+            <input id="btnAdd" type="button" value="AFEGIR TASCA" onclick="addList()">
+        </p>
+
+        <h3>Llista de tasquers: </h3>
+        <ul id="listaPadre"> </ul>
+        
+        <script language="javascript">
+            function addList() {
+                let textoInput = document.getElementById("userTexto").value + "    ";
+                let lista = document.getElementById("listaPadre");
+
+                let itemLista = document.createElement("li");
+                let textoLista = document.createTextNode(textoInput);
+
+                let btnEliminar = document.createElement("button");
+                btnEliminar.textContent = "ELIMINAR TASCA";
+                btnEliminar.onclick = eliminarList;
+
+                itemLista.appendChild(textoLista);
+                itemLista.appendChild(btnEliminar);
+
+                lista.appendChild(itemLista);
+            }
+
+            function eliminarList() {
+                this.parentElement.remove();
+            }
+        </script>
+
+    </body>
+</html>

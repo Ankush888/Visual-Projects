@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Eventos 15 - Ankush Bihal</title>
+    </head>
+
+    <body>
+        <h1>DWEC_Events Exercici 15</h1>
+        <p id="resultado"><strong>Velocidad: </strong>0 km/h.</p>
+        
+        <script language="javascript">
+            let textoVelocidad = document.getElementById("resultado");
+            let contador = 0;
+
+            document.addEventListener('keydown', function (e) {
+                if (e.keyCode === 38) {
+                    contador++;
+                    textoVelocidad.innerHTML = "<strong>Velocidad: </strong>" + contador + " km/h.";
+
+                    if (contador > 120) {
+                        textoVelocidad.innerHTML = "<strong>Velocidad: </strong> ERROR!!! - No puede pasar de 120 km/h.";
+                        contador = 120;
+                    }
+
+                } else if (e.keyCode === 40) {
+                    contador--;
+                    textoVelocidad.innerHTML = "<strong>Velocidad: </strong>" + contador + " km/h.";
+
+                    if (contador < 0) {
+                        textoVelocidad.innerHTML = "<strong>Velocidad: </strong>ERROR!!! - No puede ir a una velocidad menor de 0 km/h.";
+                        contador = 0;
+                    }
+                }
+            });
+        </script>
+
+    </body>
+</html>

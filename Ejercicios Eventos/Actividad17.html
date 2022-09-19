@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Eventos 17 - Ankush Bihal</title>
+        <style>
+            #carregant {
+                background-color: black;
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;                
+                justify-content: center;
+                align-items: center;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .ocultar {
+                top: 110% !important;
+                transition: 10s;
+            }
+
+            h1 {
+                color: black;
+            }
+        </style>
+    </head>
+
+
+    <body onload="loadFotos()">
+        <h1>DWEC_Events Exercici 17</h1>
+
+        <div id="carregant">
+            <h1 style="color: white !important">Carregant ...</h1>
+        </div>
+
+        <img src="https://source.unsplash.com/random/1600x900">
+        <img src="https://placekitten.com/1600/900">
+        <img src="https://picsum.photos/1920">
+        <img src="https://www.fillmurray.com/1280/760">
+        <img src="https://loremflickr.com/1920/1048">
+
+
+        <script language="javascript">
+            function loadFotos() {
+                let fotos = document.getElementById("carregant");
+                fotos.setAttribute("class", "ocultar");
+            }
+        </script>
+
+    </body>
+</html>

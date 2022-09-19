@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Eventos 3.2 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Events Exercici 3.2</h1>
+        <h1 id="elmH1">CAPTURING</h1>
+
+        <script language="javascript">
+            var contador = 0;
+            var elEmentoRaiz_html = document.documentElement;
+            var elBody = document.body;
+            let elH1 = document.getElementById("elmH1");
+            
+            function mostrarMensaje(objecte) {
+                contador = contador + 1;
+                alert(contador + " " + objecte.tagName);
+            }
+            
+            elEmentoRaiz_html.addEventListener("click", function() { mostrarMensaje(elEmentoRaiz_html);}, true);
+            elBody.addEventListener("click", function() { mostrarMensaje(elBody);}, true);
+            elH1.addEventListener("click", function() { mostrarMensaje(elH1);}, true);
+        </script>
+        
+    </body>
+</html>

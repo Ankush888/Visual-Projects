@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio BOM 2 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_BOM Exercici 2</h1>
+
+        <div id="reloj">
+            <img id="hora1" src="">
+            <img id="hora2" src="">
+            <img src="imgs/colon.gif">
+            <img id="minuto1" src="">
+            <img id="minuto2" src="">
+            <img src="imgs/colon.gif">
+            <img id="segundo1" src="">
+            <img id="segundo2" src="">
+            <img id="pm/am" src="">
+        </div>
+
+        <script>
+            function tiempoReal() {
+                var fecha = new Date();
+                var segundosActuales = String(fecha.getSeconds());
+                var minutosActuales = String(fecha.getMinutes());
+                var horasActuales = String(fecha.getHours());
+
+                var segundo1 = segundosActuales.slice(0, 1);
+                var segundo2 = segundosActuales.slice(1, 2);
+                var minuto1 = minutosActuales.slice(0, 1);
+                var minuto2 = minutosActuales.slice(1, 2);
+                var hora1 = horasActuales.slice(0, 1);
+                var hora2 = horasActuales.slice(1, 2);
+
+                document.getElementById("hora1").src = "imgs/c" + hora1 + ".gif";
+                document.getElementById("hora2").src = "imgs/c" + hora2 + ".gif";
+                document.getElementById("minuto1").src = "imgs/c" + minuto1 + ".gif";
+                document.getElementById("minuto2").src = "imgs/c" + minuto2 + ".gif";
+                document.getElementById("segundo1").src = "imgs/c" + segundo1 + ".gif";
+                document.getElementById("segundo2").src = "imgs/c" + segundo2 + ".gif";
+
+                if (horasActuales > 12) {
+                    document.getElementById("pm/am").src = "imgs/cpm.gif";
+                } else {
+                    document.getElementById("pm/am").src = "imgs/cam.gif";
+                }
+            }
+
+            setInterval(tiempoReal, 1000);
+        </script>
+
+    </body>
+</html>

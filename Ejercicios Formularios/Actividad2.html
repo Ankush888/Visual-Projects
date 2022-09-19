@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Formularios 2 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Formularis Exercici 2</h1>
+        <h3>TEXTAREA: </h3>
+
+        <textarea id="inputTxtArea" rows="4" cols="30" maxlength="150"></textarea>
+
+        <p id="respuesta1"> Caràcteres Escritos:  <strong> 0 </strong></p>
+        <p id="respuesta2"> Caràcteres Restantes: <strong> 150 </strong></p>
+
+        <script language="javascript">
+            let textoArea = document.getElementById("inputTxtArea");
+            var maxCarateresPermitidos = 150;
+
+            let texto1;
+            let texto2;
+
+            document.getElementById('respuesta2').innerHTML = ("Caràcteres Restantes: <strong>" + maxCarateresPermitidos + "</strong>");
+
+            textoArea.addEventListener('keyup', function () {
+                texto1 = "Caràcteres Escritos: <strong>" + (textoArea.value.length + 1) + "</strong>";
+                document.getElementById("respuesta1").innerHTML = texto1;
+
+                //==================================================================
+                let text_length = textoArea.value.length;
+                let text_Restantes = maxCarateresPermitidos - text_length;
+                texto2 = "Caràcteres Restantes: <strong>" + text_Restantes + "</strong>";
+                document.getElementById("respuesta2").innerHTML = texto2;
+            });
+        </script>
+
+    </body>
+</html>

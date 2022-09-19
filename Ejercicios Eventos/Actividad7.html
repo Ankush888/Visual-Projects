@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html onmousemove="coordenadasPantalla(event)" onmousedown="btnPressed(event)" onkeypress="btnTecladoPulsado(event)">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Eventos 7 - Ankush Bihal</title>
+        <style>
+            #divPadre{
+                display: block;
+            }
+
+            #div1, #div2{
+                border: solid 2px;
+                display: inline-block;
+                padding: 10px;
+                padding-top: 0px !important;
+                padding-right: 5% !important;
+            }
+
+            #div2{
+                background: #b6c9f6;
+            }
+        </style>
+    </head>
+
+
+    <body onmousemove="coordenadasPagina(event)">
+        <h1>DWEC_Events Exercici 7</h1>
+
+        <div id="divPadre">
+            <div id="div1">
+                <h2>Ratoí</h2>
+                <p id="resultado1"><strong>Pantalla: </strong></p>
+                <p id="resultado2"><strong>Pàgina: </strong></p>
+                <p id="resultado3"><strong>Clic esquerre: </strong></p>
+                <p id="resultado4"><strong>Clic dret: </strong></p>
+                <p id="resultado5"><strong>Clic botó del mig: </strong></p>
+            </div>
+
+            <div id="div2">
+                <h2>Teclat</h2>
+                <p id="resultadoTeclado1"><strong>Càracter: </strong></p>
+                <p id="resultadoTeclado2"><strong>Cpdi: </strong></p>
+            </div>
+        </div>
+
+        <script language="javascript">
+            function coordenadasPantalla(event) {
+                let x = event.screenX;
+                let y = event.screenY;
+                let coords1 = "[" + x + "," + y + "]";
+                document.getElementById("resultado1").innerHTML = "<strong>Pantalla: </strong>" + coords1;
+            }
+
+            function coordenadasPagina(event) {
+                let x = event.clientX;
+                let y = event.clientY;
+                let coords2 = "[" + x + "," + y + "]";
+                document.getElementById("resultado2").innerHTML = "<strong>Pàgina: </strong>" + coords2;
+            }
+
+            function btnPressed(event) {
+                let divPriemro = document.getElementById("div1");
+                let btnPulsado = event.button;
+                let texto1;
+                let texto2;
+                let texto3;
+
+                if (btnPulsado == 0) {
+                    texto1 = "SI";
+                    divPriemro.style.background = "#fefec8";
+                } else {
+                    texto1 = " NO";
+                }
+
+                if (btnPulsado == 1) {
+                    texto2 = "SI";
+                    divPriemro.style.background = "#fefec8";
+                } else {
+                    texto2 = "NO";
+                }
+
+                if (btnPulsado == 2) {
+                    texto3 = "SI";
+                    divPriemro.style.background = "#fefec8";
+                } else {
+                    texto3 = "NO";
+                }
+
+                document.getElementById("resultado3").innerHTML = "<strong>Clic esquerre: </strong>" + texto1;
+                document.getElementById("resultado4").innerHTML = "<strong>Clic dret: </strong>" + texto3;
+                document.getElementById("resultado5").innerHTML = "<strong>Clic botó del mig: </strong>" + texto2;
+            }
+
+            function btnTecladoPulsado(event) {
+                let caracter = event.key;
+                let codigo = event.keyCode;
+                document.getElementById("resultadoTeclado1").innerHTML = "<strong>Càracter: </strong> [" + caracter + "]";
+                document.getElementById("resultadoTeclado2").innerHTML = "<strong>Codi </strong> [" + codigo + "]";
+            }
+        </script>
+
+    </body>
+</html>

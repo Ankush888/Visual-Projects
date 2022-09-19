@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Formularios 3 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Formularis Exercici 3</h1>
+
+        <input id="txtUser" type="text"/> 
+        <select id="opciones">
+            <option id="1">Binari</option>
+            <option id="2">Octal</option>
+            <option id="3">Decimal</option>
+            <option id="4">Hexadecimal</option>
+        </select>
+
+        <p id="respuesta"></p>
+
+
+        <script language="javascript">
+            let posicion_OpcionElegida;
+            let num = document.getElementById("txtUser");
+            let seleccio = document.getElementById("opciones");
+
+
+            seleccio.addEventListener('change', function () {
+                num.value = "";
+                posicion_OpcionElegida = seleccio.selectedIndex;
+            });
+
+
+            num.addEventListener('keypress', function () {
+               
+                if (seleccio.selectedIndex == 3) {
+
+                    var expRegula_Hexa = new RegExp(/[0-9A-Fa-f]{6}/g);
+                    if (expRegula_Hexa.test(num)) {
+                        document.getElementById("respuesta").innerHTML = "es Hexadecimal";
+                    } else {
+                        document.getElementById("respuesta").innerHTML = "no es Hexadecimal";
+                    }
+                }
+            });
+            //==================================================================
+
+        </script>
+
+    </body>
+</html>

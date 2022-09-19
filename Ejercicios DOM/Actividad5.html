@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+    <head>    
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Exercici DOM 5 - Ankush Bihal</title>
+    </head>
+
+    <body>
+        <h1>DWEC_DOM Exercici 5</h1>
+
+        <ol id="llista">
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Consectetuer adipiscing elit</li>
+            <li>Sed mattis enim vitae orci</li>
+            <li>Phasellus libero</li>
+            <li>Maecenas nisl arcu</li>
+        </ol>
+
+        <input id="data1" type="text">
+        <input type="button" value="Afegeix element" onclick="afegeix();">
+
+        <script>
+            function afegeix() {
+                // Aqui creamos un elemento del tipo List (ol - ul).
+                var lista = document.getElementById("llista");
+
+                // Aqui creamos un elemento del tipo li (ListItem) de lista.
+                var listItem = document.createElement("li");
+
+                // Aqui pillamos el valor/texto que introduce el Usuario.
+                var valorInput = document.getElementById("data1").value;
+
+                // Aqui creamos un nodo de texto y le introducimos el valor del INPUT.
+                var texto = document.createTextNode(valorInput);
+
+                // Aqui ponemos el texto en el elemento li(ListItem) de la lista.
+                listItem.appendChild(texto);
+
+                // Aqui ponemos el li en el elemento list(ol - ul) de la lista.
+                lista.appendChild(listItem);
+            }
+        </script>
+
+    </body>
+</html>

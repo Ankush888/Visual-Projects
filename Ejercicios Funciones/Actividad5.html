@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Funciones 5 - Ankush Bihal</title>
+        <style>
+            h3{
+                border: 2px dashed black;
+                width: 35px;
+                padding: 10px;
+                font-size: xx-large;
+                height: 40px;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Funcions Exercici 5</h1>
+        <h2>TEMPORITZADOR</h2>
+
+        <p>Introdueix nombre de segons: <input type="number" id="numIntro"/> <input type="button" id="btnIniciar" value="INICIAR" onclick="inicar()"/></p>
+        <h3> <span id="seconds"> </span> </h3>
+
+
+        <script language="javascript">
+            function inicar() {
+
+                function segundos() {
+                    return  document.getElementById("numIntro").value;
+                }
+                let segundosIntroducidos = segundos();
+
+
+                //==================================================================
+                function mostrar(segundosIntroducidos) {
+                    return document.getElementById("seconds").innerHTML = segundosIntroducidos;
+                }
+
+
+                //==================================================================
+                function logicaTiempo() {
+
+                    if (segundosIntroducidos <= 0) {
+                        mostrar(segundosIntroducidos);
+                        alert("S'ha acabat el temps!!!");
+                    } else {
+                        mostrar(segundosIntroducidos);
+                        segundosIntroducidos--;
+                        setTimeout(logicaTiempo, 1000);
+                    }
+                }
+
+
+                //==================================================================
+                if (segundosIntroducidos === "") {
+                    alert("ERROR!!! Campo Introducir Segundos esta: VACIO.");
+                } else {
+                    logicaTiempo();
+                }
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Formularios 5 - Ankush Bihal</title>
+        <style>
+            div,
+            textarea {
+                height: 150px;
+                width: 400px;
+                font-family: sans-serif;
+                font-size: 14px;
+                display: block;
+            }
+
+            div {
+                /* padding + border = 3px */
+                padding: 2px;
+                border: 1px solid black;
+            }
+
+            textarea {
+                /* canviar padding per border (3px per evitar que el contingut se mogui) */
+                border: 3px solid blue;
+
+            }
+
+            textarea:focus {
+                /* eliminar border exterior quan té el focus */
+                outline: none;
+            }            
+        </style>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Formularis Exercici 5</h1>
+        <h3>EDIT_TABLE: </h3>
+        <ul>
+            <li>Clica en el div per editar.</li>
+            <li>Prem ENTER o perd el focus per guardar el resultat.</li>
+        </ul>
+
+        Se permet HTML.
+        <div id="texto" onclick="crearTextArea()" >Text</div>
+
+        <script language="javascript">
+            let divTexto = document.getElementById("texto");
+            let textArea = document.createElement("textarea");
+
+            function crearTextArea() {
+                // Meter el textArea dentro del div.
+                document.body.appendChild(textArea);
+                textArea.setAttribute("onkeydown", "modificarTexto(this)");
+                textArea.style.display = "inherit";
+                divTexto.style.display = "none";
+
+                //==============================================================
+                textArea.addEventListener("keydown", function modificarTexto(e) {
+                    let teclaEnter = e.which || e.keyCode;
+
+                    if (teclaEnter == 13) {
+                        textArea.blur();
+                    }
+                });
+
+                //==============================================================
+                textArea.addEventListener("blur", function quitarFocus() {
+                    textArea.style.display = "none";
+                    divTexto.style.display = "inherit";
+
+                    let datosText = textArea.value;
+                    divTexto.innerHTML = datosText;
+                });
+            }
+        </script>
+        
+    </body>
+</html>

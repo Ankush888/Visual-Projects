@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <style>
+            #crono {
+                border: 1px solid black;
+                padding: 8px;
+                font-size: 50px;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+
+        <h1>CRONOMETRE</h1>
+
+        <a id="crono">00:00.00</a><br><br>
+
+        <button id="btn1" onclick="start()">Iniciar</button>
+        <button id="btn2" onclick="reset()" disabled>Restablir</button>
+
+
+        <script>
+            //milisegons que duu el contador
+            let curTime = 0;
+            let clockRunning = false;
+            let crono = document.getElementById("crono");
+
+
+            function start() {
+                clockRunning = true;
+
+                document.getElementById("btn1").setAttribute("onclick", "stop()");
+                document.getElementById("btn1").innerHTML = "stop";
+                document.getElementById("btn2").setAttribute("disabled", true);
+            }
+
+
+            function stop() {
+                clockRunning = false;
+
+                document.getElementById("btn1").setAttribute("onclick", "start()");
+                document.getElementById("btn1").innerHTML = "Iniciar";
+                document.getElementById("btn2").removeAttribute("disabled", true);
+            }
+
+
+            function reset() {
+                clockRunning = false;
+                curTime = 0;
+
+                m = 0;
+                s = 0;
+                ms = 0;
+
+                document.getElementById("btn1").setAttribute("onclick", "start()");
+                document.getElementById("btn1").innerHTML = "iniciar";
+                document.getElementById("btn2").setAttribute("disabled", true);
+
+                print();
+
+            }
+
+
+            let m = 0;
+            let dots = ":";
+            let s = 0;
+            let dot = ".";
+            let ms = 0;
+            let printar;
+
+            function print() {
+
+                ms = curTime;
+
+                if (ms >= 100) {
+                    curTime = 0;
+                    s++;
+                }
+
+                if (s >= 60) {
+                    s = 0;
+                    m++;
+                }
+
+
+                if (s < 10) {
+                    dots = ":0"
+                } else {
+                    dots = ":"
+                }
+
+                if (ms < 10) {
+                    dot = ".0"
+                } else {
+                    dot = "."
+                }
+
+                printar = m + dots + s + dot + ms;
+                crono.innerHTML = printar;
+
+            }
+
+            function clockTick() {
+                if (clockRunning) {
+                    curTime++;
+                    print();
+                }
+            }
+
+            setInterval(clockTick, 10);
+
+        </script>
+
+    </body>
+</html>

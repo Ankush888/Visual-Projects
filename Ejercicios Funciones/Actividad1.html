@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Funciones 1 - Ankush Bihal</title>
+        <style>
+            h3{
+                border: 1px solid black;
+                width: max-content;
+                padding: 10px;
+                font-size: xx-large;
+            }
+
+
+        </style>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Funcions Exercici 1</h1>
+        <h2>CRONÓMETRE:</h2>
+
+        <h3>
+            <span id="minuts">00</span>:<span id="seconds">00</span>.<span id="miliseconds">00</span>
+        </h3>
+
+
+        <button id="btnIniciar" onclick="iniciar()">Inicar</button>
+        <button id="btnRestaurar" onclick="reiniciar()" disabled>Restaurar</button>
+
+
+        <script language="javascript">
+            let minutosPintar = document.getElementById("minuts");
+            let segundosPintar = document.getElementById("seconds");
+            let milisegundosPintar = document.getElementById("miliseconds");
+
+            let minutos = 0;
+            let segundos = 0;
+            let milisegundos = 0;
+            let tiempo;
+
+
+            //==================================================================
+            function mostrar() {
+                minutosPintar.innerText = formatNumero(minutos);
+                segundosPintar.innerText = formatNumero(segundos);
+                milisegundosPintar.innerText = formatNumero(milisegundos);
+            }
+
+
+            //==================================================================
+            function timer() {
+                milisegundos++;
+
+                if (milisegundos >= 100) {
+                    milisegundos = 0;
+                    segundos = segundos + 1;
+                }
+
+                if (segundos >= 60) {
+                    segundos = 0;
+                    minutos = minutos + 1;
+                }
+
+                if (minutos >= 60) {
+                    clearInterval(tiempo);
+                }
+
+                mostrar();
+            }
+
+
+
+            //==================================================================
+            function iniciar() {
+                let botonInicar = document.getElementById("btnIniciar");
+                let botonRestaurar = document.getElementById("btnRestaurar");
+
+                if (botonInicar.innerHTML == "Inicar") {
+                    tiempo = setInterval(timer, 10);
+
+                    botonInicar.innerHTML = "Apagar";
+                    botonRestaurar.disabled = true;
+                } else {
+                    botonInicar.innerHTML = "Inicar";
+                    clearInterval(tiempo);
+                    mostrar();
+                    botonRestaurar.disabled = false;
+                }
+            }
+            
+            //==================================================================
+            function reiniciar() {
+                // Ponemos a 0 los minutos, segundos y las centecimas:
+                minutos = 0;
+                segundos = 0;
+                milisegundos = 0;
+
+                // Mostramos los datos del temporizador PARADO.
+                mostrar();
+            }
+
+            function formatNumero(num) {
+                if (num < 10) {
+                    return '0' + num;
+                } else {
+                    return num;
+                }
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 2 - Funciones</title>
+        <style>
+            #cronometro{
+                width: 19%;
+                border: 3px solid grey;
+                padding-top: 25px;
+                padding-bottom: 25px;
+                padding-left: 25px;
+                padding-right: 50px;
+                font-size: 40px;
+                margin-top: 0px;
+                margin-bottom: 20px;
+            }
+
+            p{
+                position: absolute;
+                font-size: 13px;
+                top: 30%;
+                left: 4%;
+                margin-bottom: 0px;
+                margin-top: 0px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>DWEC_Funcions Exercici 2</h1>
+        <h2>CRONÓMETRE:</h2>
+
+        <div>
+            <h3 id="cronometro"> <span id="minutos">00</span>:<span id="segundos">00</span>.<span id="centecimas">00</span> </h3>
+
+            <button id="btnIniciar" type="button" onclick="iniciar()"> INICIAR </button>
+            <button id="btnReiniciar" type="button" onclick="reIniciar()" disabled> REINICIAR </button>
+        </div>
+
+        <p>Minutos, Segundos, Centesimas</p>
+
+
+        <script>
+            var showMinuts = document.getElementById("minutos");
+            var showSeconds = document.getElementById("segundos");
+            var showCentecims = document.getElementById("centecimas");
+            var varTemporizador;
+
+
+            /*================================================================*/
+            var timer = function () {
+                var minuts = 0;
+                var seconds = 0;
+                var centecimes = 0;
+
+                mostrar = function () {
+                    showCentecims.innerText = formato(centecimes);
+                    showSeconds.innerText = formato(seconds);
+                    showMinuts.innerText = formato(minuts);
+                }
+
+                reIniciar = function () {
+                    minuts = 0;
+                    seconds = 0;
+                    centecimes = 0;
+                    mostrar();
+                }
+
+                return function () {
+                    centecimes++;
+
+                    if (centecimes >= 100) {
+                        centecimes = 0;
+                        seconds += 1;
+                    }
+
+                    if (seconds >= 60) {
+                        seconds = 0;
+                        minuts += 1;
+                    }
+
+                    if (minuts >= 60) {
+                        clearInterval(varTemporizador);
+                    }
+                    mostrar();
+                }
+            }();
+
+            function formato(num) {
+
+                if (num < 10) {
+                    return '0' + num;
+                } else {
+                    return num;
+                }
+            }
+
+
+            /*================================================================*/
+            function iniciar() {
+                var btnInicar = document.getElementById('btnIniciar');
+                var btnReinicair = document.getElementById('btnReiniciar');
+
+                if (btnInicar.innerText == "INICIAR") {
+                    // Ponemos en marcha el temporizador:
+                    varTemporizador = setInterval(timer, 10);
+
+                    // Cambiamos el texto del boton Inicia por Apagar:
+                    btnInicar.innerText = "APAGAR";
+
+                    // Hacemos vivible el boton REINICIAR:
+                    btnReinicair.disabled = true;
+
+                } else {
+                    // Cambiamos el texto del boton Apagar por Iniciar:
+                    btnInicar.innerText = "INICIAR";
+
+                    // Paramos el temporizador:
+                    clearInterval(varTemporizador);
+
+                    // Mostramos los datos del temporizador PARADO.
+                    mostrar();
+                    btnReinicair.disabled = false;
+                }
+            }
+        </script>
+
+    </body>
+</html>

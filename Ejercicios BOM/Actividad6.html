@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio BOM 6 - Ankush Bihal</title>
+        <style>
+            div{
+                background-color: red;
+                width: 0;
+                height: 30px;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <h1>DWEC_BOM Exercici 6</h1>
+
+        <input id="btn1" type="button" value="Crear Ventana" onclick="crearVentana()">
+        <input id="btn2" type="button" value="Parar Ventana" onclick="pararVentana()">
+        <input id="btn3" type="button" value="Cerrar Ventana" onclick="cerrarVentana()">
+        <p><strong id="respuesta"></strong></p>
+
+
+
+        <script>
+            var miWindow;
+            var temporizador1;
+            var temporizador2;
+            var incremento = 10;
+
+            function crearVentana() {
+                if (miWindow == null) {
+                    miWindow = window.open("", "_blank", "toolbar= no, scrollbars=no, resizable=no, top=500, left=500, width=190, height=200");
+                    temporizador1 = setInterval(mover, 100);
+                    temporizador2 = setInterval(cambioDireccion, 2000);
+                    miWindow.focus();
+                } else {
+                    document.getElementById("respuesta").innerHTML = "ERROR!!! Hay una Ventana ya creada.";
+                }
+            }
+
+            function mover() {
+                miWindow.moveBy(incremento, 0);
+                console.log("Ventana avanzando");
+            }
+
+            function cambioDireccion() {
+                incremento = -incremento;
+                console.log("cambia Direccion");
+            }
+
+
+            // ========================================================================
+            function pararVentana() {
+                clearInterval(temporizador1);
+                clearInterval(temporizador2);
+                miWindow.focus();
+            }
+
+
+            // ========================================================================
+            function cerrarVentana() {
+                if (miWindow == null) {
+                    document.getElementById("respuesta").innerHTML = "ERROR!!! No hay ningua Ventana abierta.";
+                } else {
+                    miWindow.close();
+                }
+            }
+        </script>
+
+    </body>
+</html>

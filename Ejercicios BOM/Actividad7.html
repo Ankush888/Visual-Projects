@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio BOM 7 - Ankush Bihal</title>
+        <style>
+            #bordes {
+                width: 210px;
+                height: 210px;
+                border: 3px solid #555;
+                padding: 5px;
+            }
+
+            #circulo {
+                width: 200px;
+                height: 200px;
+                -moz-border-radius: 50%;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+                background-color: rgb(0, 0, 0);   
+            }
+
+            #btn{
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                cursor: pointer;
+                display: none;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <h1>DWEC_BOM Exercici 7</h1>
+        <div id="bordes">
+            <div id="circulo">
+                <button id="btn" onclick="funcionamientoBoton()">ELIMINAR</button><br><br>
+            </div>
+        </div>
+
+        <script>
+            var elCirculo = document.getElementById("circulo");
+            var incremento = 0;
+            var tiempo;
+
+            tiempo = setInterval(cambiarColor, 300);
+
+            function cambiarColor() {
+                incremento = incremento + 5;
+                elCirculo.style.backgroundColor = "rgb(0, " + incremento + ", 0)";
+
+                if (incremento >= 255) {
+                    document.getElementById("btn").style.display = "block";
+                    clearInterval(tiempo);
+                }
+            }
+
+            // ========================================================================
+            function funcionamientoBoton() {
+                document.getElementById("bordes").remove();
+            }
+        </script>
+
+    </body>
+</html>

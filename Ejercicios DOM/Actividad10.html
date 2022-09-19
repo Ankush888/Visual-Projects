@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio DOM 10 - Ankush Bihal</title>
+        <style>
+            p {
+                display: inline;
+                padding: 2%;
+                margin: 1%;
+                font-size: 50px;
+                background-color: gainsboro;
+                position: relative;
+                border: solid;
+                border-radius: 8px;
+            }
+
+            #botones {
+                display: initial;
+                padding: 1%;
+                margin-left: 0.5%;
+            }
+
+            input {
+                font-size: 20px;
+                background-color: lavender;
+                border: solid;
+                border-radius: 8px;
+                cursor: pointer;
+                padding: 10px;
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    
+    
+    <body>
+        <h1>DWEC_DOM Exercici 10</h1>
+        <h1>Miniloteria</h1>
+
+        <h3>====================================</h3>
+        <br>
+        <div id="numerosLoteria"></div>
+        <br>
+        <h3>====================================</h3>
+
+        <div id="botones"> 
+            <input type="button" value="Genera decimos" onclick="numeros()">
+            <input type="button" value="Realizar sorteo" onclick="ganador()">
+        </div>
+
+        <h3>====================================</h3>
+
+        <br><br>
+        <div id="ganador"></div>
+
+
+        <script>
+            function numeros() {
+                var loteria = document.getElementById("numerosLoteria");
+
+                if (loteria.innerHTML = "") {
+                    for (var i = 0; i < 3; i++) {
+                        var nuevoNumero = document.createElement("p");
+                        var numero = document.createTextNode(Math.round(Math.random() * 5));
+                        nuevoNumero.appendChild(numero);
+                        loteria.appendChild(nuevoNumero);
+                    }
+                } else {
+                    loteria.innerHTML = "";
+                    for (var i = 0; i < 3; i++) {
+                        var nuevoNumero = document.createElement("p");
+                        var numero = document.createTextNode(Math.round(Math.random() * 5));
+                        nuevoNumero.appendChild(numero);
+                        loteria.appendChild(nuevoNumero);
+                    }
+                }
+            }
+
+
+            //===========================================================================
+            function ganador() {
+                var numerosPosibles = document.getElementById("numerosLoteria");
+                var loteria = document.getElementById("ganador");
+
+                if (loteria.innerHTML = "") {
+                    var nuevoNumero = document.createElement("p");
+                    var numero = document.createTextNode(Math.round(Math.random() * 5));
+                    nuevoNumero.appendChild(numero);
+                    loteria.appendChild(nuevoNumero);
+                } else {
+                    loteria.innerHTML = "";
+                    var nuevoNumero = document.createElement("p");
+                    var numero = document.createTextNode(Math.round(Math.random() * 5));
+                    nuevoNumero.appendChild(numero);
+                    loteria.appendChild(nuevoNumero);
+                }
+
+                var numeros = numerosPosibles.querySelectorAll("p");
+                var ganador = loteria.querySelector("p");
+                numerosPosibles.style.color = "red";
+
+                for (var i = 0; i < numeros.length; i++) {
+                    if (numeros[i].innerHTML == ganador.innerHTML) {
+                        numeros[i].style.color = "green";
+                        ganador.style.color = "green";
+                    }
+                }
+            }
+        </script>
+
+    </body>
+</html>

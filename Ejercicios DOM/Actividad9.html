@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio DOM 9 - Ankush Bihal</title>
+        <style>
+            table, td, tr, th{
+                border: 1px solid black;
+                text-align: center;
+            }
+            button{
+                display: initial;
+                background-color: lavender;
+                border: solid;
+                border-radius: 8px;
+                cursor: pointer;
+                padding: 5px;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <h1>DWEC_DOM Exercici 9</h1>
+
+        <table id="laTabla">
+            <tbody id="t">
+                <tr>
+                    <td>Cel·la 1.1</td>
+                    <td>Cel·la 1.2</td>
+                </tr>
+                <tr>
+                    <td>Cel·la 2.1</td>
+                    <td>Cel·la 2.2</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <p>Text: <input id="textoUser" type="text"></p>
+        <p>Nº Filas: <input id="numFilas" type="number"></p>
+        <p>Nº Columnas: <input id="numColums" type="number"></p>
+
+        <div> 
+            <button onclick="addColumna()">Añadir Columna</button>
+            <button onclick="addFila()">Añadir Fila</button>
+            <button onclick="modificarCloumna()">Cambiar valor Celda</button>
+        </div><br>
+
+        <div>
+            <button onclick="eliminarColumna()">Borrar Columna</button>
+            <button onclick="eliminarFila()">Borrar Fila</button>
+            <button onclick="cambiarTextoCelda()">Canviar celdas tabla</button>
+        </div>
+
+
+        <script>
+            //=======================================================================
+            function addColumna() {
+                // Número de tr y td
+                let tr = document.getElementsByTagName("tr");
+                let tds = tr[0].getElementsByTagName("td");
+
+                // Valores que nos da el usuario
+                let numColumnas = Number(document.getElementById("numColums").value);
+                let txt = document.getElementById("textoUser").value;
+
+                if (numColumnas <= tds.length && numColumnas >= 0) {
+                    for (let i = 0; i < tr.length; i++) {
+                        let td = tr[i].getElementsByTagName("td");
+
+                        let addTd = document.createElement("td");
+                        addTd.appendChild(document.createTextNode(txt));
+
+                        tr[i].insertBefore(addTd, td[numColumnas]);
+                    }
+                }
+            }
+
+
+            //=======================================================================
+            function addFila() {
+                // Número de tr y td
+                let tr = document.getElementsByTagName("tr");
+                let td = tr[0].getElementsByTagName("td");
+
+                // Valores que nos da el usuario
+                let numFilas = Number(document.getElementById("numFilas").value);
+                let txt = document.getElementById("textoUser").value;
+
+                if (numFilas <= tr.length) {
+                    let addTr = document.createElement("tr");
+
+                    for (let i = 0; i < td.length; i++) {
+                        let addTd = document.createElement("td");
+                        addTd.appendChild(document.createTextNode(txt));
+
+                        addTr.appendChild(addTd);
+                    }
+                    document.getElementById("t").insertBefore(addTr, tr[numFilas]);
+                }
+            }
+
+
+            //=======================================================================
+            function modificarCloumna() {
+                // Número de tr y td
+                let tr = document.getElementsByTagName("tr");
+                let td = tr[0].getElementsByTagName("td");
+
+                // Valores que nos da el usuario
+                let numF = Number(document.getElementById("numFilas").value);
+                let numC = Number(document.getElementById("numColums").value);
+                let txt = document.getElementById("textoUser").value;
+
+                if (numF < tr.length && numC < td.length) {
+                    let celda = tr[numF].getElementsByTagName("td")[numC];
+                    celda.innerHTML = txt;
+                }
+            }
+
+
+            //=======================================================================
+            function eliminarColumna() {
+                // Número de tr y td
+                let tr = document.getElementsByTagName("tr");
+                let tds = tr[0].getElementsByTagName("td");
+
+                // Valores que nos da el usuario
+                let numeroColumnas = Number(document.getElementById("numColums").value);
+
+                if (numeroColumnas < tds.length) {
+                    for (let i = 0; i < tr.length; i++) {
+                        let td = tr[i].getElementsByTagName("td");
+                        td[numeroColumnas].remove();
+                    }
+                }
+            }
+
+
+            //=======================================================================
+            function eliminarFila() {
+                // Número de tr y td
+                let tr = document.getElementsByTagName("tr");
+
+                // Valores que nos da el usuario
+                let numeroFilas = Number(document.getElementById("numFilas").value);
+
+                if (numeroFilas < tr.length) {
+                    tr[numeroFilas].remove();
+                }
+            }
+
+
+            //=======================================================================
+            function cambiarTextoCelda() {
+                // Número de tr y td
+                let tr = document.getElementsByTagName("tr");
+
+                // Valores que nos da el usuario
+                let texto = document.getElementById("textoUser").value;
+
+                for (let i = 0; i < tr.length; i++) {
+                    let td = tr[i].getElementsByTagName("td");
+
+                    for (let j = 0; j < td.length; j++) {
+                        td[j].innerHTML = texto;
+                    }
+                }
+            }
+        </script>
+
+    </body>
+</html>

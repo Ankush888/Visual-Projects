@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html onclick="moverDiv(event)">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Eventos 10 - Ankush Bihal</title>
+    </head>
+    
+    <body>
+        <h1>DWEC_Events Exercici 10</h1>
+
+        <script language="javascript">
+            let elDiv = document.createElement("div");
+            elDiv.setAttribute("id", "divMovible");
+
+            elDiv.style.border = "solid 5px red";
+            elDiv.style.width = "50px";
+            elDiv.style.height = "50px";
+
+            elDiv.style.position = "absolute";
+            elDiv.style.left = 150 + "px";
+            elDiv.style.top = 150 + "px";
+
+            document.body.appendChild(elDiv);
+
+            function moverDiv(event) {
+                let x = event.clientX;
+                let y = event.clientY;
+
+                let moverElemento = document.getElementById("divMovible");
+
+                moverElemento.style.position = "absolute";
+                moverElemento.style.left = x + "px";
+                moverElemento.style.top = y + "px";
+            }
+        </script>
+        
+    </body>
+</html>

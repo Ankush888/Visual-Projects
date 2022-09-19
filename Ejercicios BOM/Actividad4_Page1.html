@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio BOM 4.1 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_BOM Exercici 4.1</h1>
+
+        <p> Nom: <input id="inNombre" type="text"></p>
+        <p> Cognoms: <input id="inApellidos" type="text"></p>
+        <input id="btnEnter" type="button" value="Entrar" onclick="crearCookie()">
+
+        <script>
+            function crearCookie() {
+                let nombre = document.getElementById("inNombre").value;
+                let apellidos = document.getElementById("inApellidos").value;
+
+                document.cookie = "username= " + nombre;
+                document.cookie = "surname= " + apellidos;
+
+                location.assign("Actividad4_Page2.html");
+            }
+        </script>
+
+    </body>
+</html>

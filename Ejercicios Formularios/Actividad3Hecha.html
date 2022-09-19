@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Formularios 3 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Formularis Exercici 3</h1>
+
+        <input id="datosNum" type="text"  onkeyup="checkCalc()"> 
+        <select id="opciones">
+            <option id="1">Binari</option>
+            <option id="2">Octal</option>
+            <option id="3">Decimal</option>
+            <option id="4">Hexadecimal</option>
+        </select>
+        <p id="respuesta"></p>
+
+
+        <script language="javascript">
+            let seleccio = document.getElementById("opciones");
+            let datos;
+
+            //Creamos la funcion que lo detecte al presionar la tecla.
+            function checkCalc() {
+                //Nos coja el valor del input
+                datos = document.getElementById("datosNum").value;
+
+                //Marcamos la opción que desamos y solos nos permitira añadir datos si cumple con el patrón designado.
+                if (seleccio.options[0].selected == true) { //Binari
+                    patron = /^[0-1]+$/; //Expresión para Binari
+                    if ((!patron.test(datos))) {
+                        alert("Solo permite datos 0 y 1");
+                        document.getElementById("datosNum").value = "";
+                    }
+                } else if (seleccio.options[1].selected == true) { //Octal
+                    patron = /^[1-7]+$/; //Expresión para Octal
+
+                    if (!(patron.test(datos))) {
+                        alert("Los datos permiditos son del 1 al 8");
+                        document.getElementById("datosNum").value = "";
+                    }
+                } else if (seleccio.options[2].selected == true) { //Decimal
+                    patron = /^[0-9]+$/; //Expresión para Decimal
+
+                    if (!(patron.test(datos))) {
+                        alert("Los datos permiditos son del 0 al 9");
+                        document.getElementById("datosNum").value = "";
+                    }
+                } else if (seleccio.options[3].selected == true) { //Hexadecimal
+                    patron = /^[A-F0-9]+$/; //Expresión para Hexadecimal
+
+                    if (!(patron.test(datos))) {
+                        alert("Los datos permiditos son del 0 al 9 y de la A a la F");
+                        document.getElementById("datosNum").value = "";
+                    }
+                }
+            }
+
+
+            //==================================================================
+            // Esta función la hemos creado para cada vez que cambiamos el select limpie el input
+            let posicion_OpcionElegida;
+            seleccio.addEventListener('change', function () {
+                document.getElementById("datosNum").value = "";
+                posicion_OpcionElegida = seleccio.selectedIndex;
+            });
+        </script>
+
+    </body>
+</html>

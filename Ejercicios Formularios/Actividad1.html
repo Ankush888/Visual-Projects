@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Formularios 1 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Formularis Exercici 1</h1>
+
+        <p>Nom <input type="text" id="inputNom"></p> 
+        <textarea id="inputTxtArea" style="width: 300px"></textarea>
+
+        <div style="display: flex">
+            <p><input id="checkHome" type="radio" name="radioGneros" value="Home"/>Home</p>
+            <p><input id="checkDona" type="radio" name="radioGneros" value="Dona"/>Dona</p>
+        </div>
+
+        <p><input type="checkbox" id="checkBici" onchange="mostrarSelectBici()"/>Tenc una bicicleta</p>
+        <select id="opcionBici" multiple style="height: 140px;" disabled>
+            <option id="bici1">Decathlon</option>
+            <option id="bici2">BH</option>
+            <option id="bici3">Trek</option>
+            <option id="bici4">Orbea</option>
+            <option id="bici5">Tucano</option>
+            <option id="bici6">Ridley</option>
+        </select>
+
+        <p><input type="checkbox" id="checkCoche" onchange="mostrarSelectCoche()"/>Tenc un cotxe</p>
+        <select id="opcionCoches" disabled>
+            <option id="coche1">Ferrari</option>
+            <option id="coche2">Peugeot</option>
+            <option id="coche3">Fiat</option>
+            <option id="coche4">Opel</option>
+        </select>
+
+        <br><br><br>
+        <input id="btnValidar" type="submit" value="VALIDAR" onclick="validar()"/>
+        <br><br><br>
+
+        <p id="respuesta"></p>
+
+        <script language="javascript">
+            //==================================================================
+            let checkBici = document.getElementById("checkBici");
+            let opcionesBici = document.getElementById("opcionBici");
+            function mostrarSelectBici() {
+                if (checkBici.checked) {
+                    opcionesBici.disabled = false;
+                } else {
+                    opcionesBici.disabled = true;
+                }
+            }
+
+
+            //==================================================================
+            let checkCoche = document.getElementById("checkCoche");
+            let opcionesCoche = document.getElementById("opcionCoches");
+            function mostrarSelectCoche() {
+                if (checkCoche.checked) {
+                    opcionesCoche.disabled = false;
+                } else {
+                    opcionesCoche.disabled = true;
+                }
+            }
+
+
+            //==================================================================
+            function validar() {
+                let nombre = document.getElementById("inputNom").value;
+                let textoArea = document.getElementById("inputTxtArea").value;
+                let checkRadios = document.getElementsByName("radioGneros");
+                let selectListaBicis = document.getElementById("opcionBici");
+                let selectListaCoches = document.getElementById("opcionCoches");
+
+                let generoSelecionado;
+                let respuestaBici;
+                let respuestaCoche;
+                let texto;
+                let bicisSeleccionadas = [];
+                let cochesSleccionados;
+
+                //-------------------------------------------
+                for (var i = 0; i < checkRadios.length; i++) {
+                    if (checkRadios[i].checked) {
+                        generoSelecionado = checkRadios[i].value;
+                    }
+                }
+
+
+                //-------------------------------------------
+                if (checkBici.checked) {
+                    respuestaBici = "Bicicleta, ";
+                    for (var i = 0; i < selectListaBicis.length; i++) {
+                        if (selectListaBicis.options[i].selected) {
+                            bicisSeleccionadas.push(selectListaBicis.options[i].text);
+                        }
+                    }
+                } else {
+                    respuestaBici = "";
+                }
+
+
+                //-------------------------------------------
+                if (checkCoche.checked) {
+                    respuestaCoche = "Coche, ";
+                    cochesSleccionados = selectListaCoches.options[selectListaCoches.selectedIndex].text;
+
+                } else {
+                    respuestaCoche = "";
+                    cochesSleccionados = "";
+                }
+
+
+                //-------------------------------------------
+                texto = "<strong>Cotinguts dels diferents camps: </strong>" +
+                        nombre + ", " +
+                        textoArea + ", " +
+                        generoSelecionado + ", " +
+                        respuestaBici + "[" +
+                        bicisSeleccionadas + "], " +
+                        respuestaCoche +
+                        cochesSleccionados + ".";
+
+                document.getElementById("respuesta").innerHTML = texto;
+            }
+        </script>
+
+    </body>
+</html>

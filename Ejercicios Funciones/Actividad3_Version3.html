@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Funciones 3 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Funcions Exercici 3</h1>
+        <h5>Versió 3:</h5>
+
+        <a href="#" id="size-12">12</a>
+        <a href="#" id="size-14">14</a>
+        <a href="#" id="size-16">16</a>
+
+
+        <script language="javascript">
+            function makeSizer(size) {
+                return function () {
+                    document.body.style.fontSize = size + 'px';
+                };
+            }
+
+            var size12 = makeSizer(12);
+            var size14 = makeSizer(14);
+            var size16 = makeSizer(16);
+
+            // Hecho con la FUNCION ANONIMAS: function() { };
+            document.getElementById('size-12').addEventListener("click", function() { size12() } );
+            document.getElementById('size-14').addEventListener("click", function() { size14() } );
+            document.getElementById('size-16').addEventListener("click", function() { size16() } );
+            
+            
+            //==================================================================
+            // Hecho con la FUNCION EN FLECHA: () =>
+//            document.getElementById('size-12').addEventListener("click", () => size12());
+//            document.getElementById('size-14').addEventListener("click", () => size14());
+//            document.getElementById('size-16').addEventListener("click", () => size16());
+        </script>
+        
+    </body>
+</html>

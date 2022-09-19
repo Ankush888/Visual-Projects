@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #temps {
+            border: 1px solid black;
+            width: 500px;
+            height: 100px;
+            font-weight: bold;
+            font-size: 100px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CRONÒMETRE</h1>
+    <div id="temps">
+        <label id="min"> </label> <label id="seg"> </label>. <label id="mili"></label>
+    </div> <br>
+    <div>
+        <button id="btnIniciar" onclick="iniciar()">INICIAR</button>
+        <button id="btnRestablir" onclick="restablir()">RESTABLIR</button>
+    </div>
+    <script>
+        let minCro = document.getElementById("min");
+        let segCro = document.getElementById("seg");
+        let miliCro = document.getElementById("mili");
+
+        let btnIniciar = document.getElementById("btnIniciar");
+        let btnRestablir = document.getElementById("btnRestablir");
+        btnRestablir.disabled = true;
+
+        /*Creamos las variables para el contador*/
+
+        minCro.innerHTML = "00:";
+        segCro.innerHTML = "00";
+        miliCro.innerHTML = "00";
+        let intervaloCro;
+
+
+        function iniciar() {
+            btnRestablir.disabled = false;
+            let minCont = 0;
+            let segCont = 0;
+            let miliCont = 0;
+            intervaloCro = setInterval(cont, 10);
+
+            function cont() {
+
+                miliCont += 1;
+                if (miliCont <= 9) {
+                    miliCro.innerHTML = "0" + miliCont;
+                } else {
+                    miliCro.innerHTML = miliCont;
+                }
+                if (miliCont >= 99) {
+                    miliCont = 0;
+                    miliCro.innerHTML = 0;
+                    segCont += 1;
+                    if (segCont <= 9) {
+                        segCro.innerHTML = "0" + segCont;
+                    } else {
+                        segCro.innerHTML = segCont;
+                    }
+
+
+                    if (segCont >= 59) {
+                        segCont = 0;
+                        segCont.innerHTML = 0;
+                        minCont += 1;
+                        if (minCont <= 9) {
+                            minCro.innerHTML = "0" + minCont + ":";
+                        } else {
+                            minCro.innerHTML = minCont + ":";
+                        }
+
+                    }
+
+                }
+            }
+
+            btnIniciar.setAttribute("onclick", "parar()");
+            btnIniciar.innerHTML = "ATURAR";
+        }
+
+
+        function parar() {
+
+            clearInterval(intervaloCro);
+            btnIniciar.setAttribute("onclick", "iniciar()");
+            btnIniciar.innerHTML = "INICIAR";
+        }
+
+        function restablir() {
+            clearInterval(intervaloCro);
+            btnIniciar.setAttribute("onclick", "iniciar()");
+            btnIniciar.innerHTML = "INICIAR";
+            minCro.innerHTML = "00:";
+            segCro.innerHTML = "00";
+            miliCro.innerHTML = "00";
+
+        }
+    </script>
+</body>
+
+</html>

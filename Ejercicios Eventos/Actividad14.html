@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Eventos 14 - Ankush Bihal</title>
+        <style>
+            #cuadroColor{
+                height: 500px;
+                width: 500px;
+                margin: 0 auto;
+                border: solid 5px black;
+                border-radius: 15px;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Events Exercici 14</h1>
+
+        <div id="cuadroColor" onmouseover="entrarDiv()" onmouseout="salirDiv()" onmousedown="clickPulsado(event)" onmouseup="colorVerde()"></div>
+        
+        <script>
+            let cambioColor = document.getElementById("cuadroColor");
+
+            function entrarDiv() {
+                cambioColor.style.backgroundColor = "green";
+            }
+
+            function salirDiv() {
+                cambioColor.style.backgroundColor = "white";
+            }
+
+            function clickPulsado(e) {
+                /*Esta función es para que no muestre las opciones del botón derecho*/
+                document.addEventListener("contextmenu", function (e) {
+                    e.preventDefault();
+                });
+
+                if (event.button == 2) {/*Click derecho*/
+                    cambioColor.style.backgroundColor = "blue";
+
+                } else if (event.button == 0) {/*Click izquierdo*/
+                    cambioColor.style.backgroundColor = "red";
+                }
+            }
+
+            function colorVerde() {
+                cambioColor.style.backgroundColor = "green";
+            }
+        </script>
+
+    </body>
+</html>

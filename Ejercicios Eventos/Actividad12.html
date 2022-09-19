@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html onmousemove="moverDiv(event)">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Eventos 12 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Events Exercici 12</h1>
+
+        <p>Lorem ipsum dolor sit amet,ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+        <p>Donec sagittis, nibh nec ullamcorper tristique, pede velit feugiat massa, at sollicitudin tellus</p>
+        <p>Donec sagittis, nibh nec ullamcorper tristique, pede velit feugiat massa, at sollicitudin tellus</p>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. </p>
+        <p>Aenean at nisl. Maecenas egestas dapibus odio. Vestibulum ante ipsum primis in faucibus orci luctus </p>
+        <p>Donec sagittis, nibh nec ullamcorper tristique, pede velit feugiat massa, at sollicitudin justo </p>
+        <p>Lorem ipsum dolor sit amet,ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+        <p>Donec sagittis, nibh nec ullamcorper tristique, pede velit feugiat massa, at sollicitudin tellus</p>
+        <p>Donec sagittis, nibh nec ullamcorper tristique, pede velit feugiat massa, at sollicitudin tellus</p>
+
+        <script language="javascript">
+            let elDiv = document.createElement("div");
+            elDiv.setAttribute("id", "divMovible");
+
+            elDiv.style.border = "solid 2px black";
+            elDiv.style.width = "100px";
+            elDiv.style.height = "50px";
+            elDiv.style.backgroundColor = "#f7f7c3";
+            elDiv.style.position = "absolute";
+            elDiv.style.textAlign = "center";
+            elDiv.style.fontSize = "x-large";
+            elDiv.style.color = "red";
+            elDiv.textContent = "HOLA";
+
+            document.body.appendChild(elDiv);
+
+            function moverDiv(event) {
+                let x = event.clientX;
+                let y = event.clientY;
+
+                let moverElemento = document.getElementById("divMovible");
+
+                moverElemento.style.position = "absolute";
+                moverElemento.style.left = x + "px";
+                moverElemento.style.top = y + "px";
+            }
+        </script>
+
+    </body>
+</html>

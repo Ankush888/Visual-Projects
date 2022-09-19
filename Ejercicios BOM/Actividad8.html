@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio BOM 8 - Ankush Bihal</title>
+        <style>
+            #bordes {
+                width: 210px;
+                height: 210px;
+                border: 3px solid #555;
+                padding: 5px;
+            }
+            p{
+                display: none;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <h1>DWEC_BOM Exercici 8</h1>
+        <p id="1"> Hola </p>
+        <p id="2"> muy buenas </p>
+        <p id="3"> esta es </p>
+        <p id="4"> una historia que  </p>
+        <p id="5"> hoy os lo voy a contar </p>
+        <p id="6"> estais preparados?? </p>
+        <p id="7"> seguro que los estais??? </p>
+        <p id="8"> seguro seguro seguro estais??? </p>
+        <p id="9"> bueno pues </p>
+        <p id="10"> alla va atentos </p>
+        <p id="11"> silencio porfavor </p>
+        <p id="12"> era se una vez </p>
+        <p id="13"> en una galaxia muy muy lejana... </p>
+        <p id="14"> Tras un ataque sorpresa de las tropas </p>
+        <p id="15"> imperiales a las bases camufladas de la alianza rebelde, </p>
+        <p id="16"> Luke Skywalker, en compañía de R2D2, parte hacia el planeta Dagobah </p>
+        <p id="17"> en busca de Yoda, el último maestro Jedi, para que le enseñe los secretos de la Fuerza. </p>
+        <p id="18"> Mientras, Han Solo, la princesa Leia, Chewbacca, y C3PO esquivan a las fuerzas imperiales y piden  </p>
+        <p id="19"> refugio al antiguo propietario del Halcón Milenario, Lando Calrissian, en la ciudad minera de Bespin, donde  </p>
+        <p id="20"> les prepara una trampa urdida por Darth Vader. </p>
+        <p id="21"> <strong> ¿Ya sabeis que historia es?    --Pista: V</strong> </p>
+
+        <script>
+            var losP = document.getElementsByTagName("p");
+            var contador = 0;
+            var tiempo;
+
+            tiempo = setInterval(mostrarP, 1000);
+
+            function mostrarP() {
+
+                if (contador < losP.length) {
+                    losP.item(contador).style.display = "block";
+                    contador = contador + 1;
+                } else {
+                    clearInterval(tiempo);
+                }
+            }
+        </script>
+
+    </body>
+</html>

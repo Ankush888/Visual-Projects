@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio Eventos 16 - Ankush Bihal</title>
+
+        <style>
+            #formatoScroll{
+                border: 1px solid black;
+                overflow:scroll;
+                margin: 0 auto;
+                width: 600px;
+                height: 600px;
+            }
+            #botonCerrar{
+                display: flex;
+                justify-content: center;
+                background-color: white;
+                margin-top: 20px;
+                width: 100%;
+                height: 150px;
+            }
+            button{
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                font-size: 20px;
+                margin-top: 30px;
+                width: 600px;
+                height: 80px;
+                display: none;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <h1>DWEC_Events Exercici 16</h1>
+
+        <div id="formatoScroll" onscroll="ventanaCerrar()" >
+            <h2>INICI</h2>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris placerat blandit tellus sit amet imperdiet. Suspendisse a nibh eget diam blandit dapibus. 
+                Quisque finibus odio sed libero suscipit mollis. Cras pretium, augue sit amet molestie rhoncus, diam arcu convallis urna, eu pulvinar risus turpis sit amet sem. 
+                Praesent varius nibh quis molestie vulputate. Cras ornare feugiat pharetra. Sed aliquet mollis quam at sagittis. Mauris tempor imperdiet est nec consequat. 
+                Nulla varius dui lectus, in porta nulla varius quis. Vestibulum ac mauris risus. Proin vestibulum tincidunt pellentesque. Nunc molestie nunc urna, quis fringilla erat eleifend sed.
+            </p>
+
+            <p> Nunc cursus convallis lectus, et commodo augue congue sed. Vivamus tellus augue, fringilla at risus placerat, ultrices molestie nibh. Proin pretium, risus non ornare cursus, 
+                lectus arcu finibus tellus, quis pulvinar dolor lacus at libero. Ut vitae interdum massa. Quisque eget posuere erat, vitae vehicula nisl. 
+                Vestibulum vitae nunc a dui euismod aliquam sed eget nisl. Cras porttitor quam lorem, ut interdum velit maximus blandit. Aenean scelerisque est convallis, sodales ligula id, porta risus. 
+            </p>
+
+            <p> Integer feugiat libero ac orci maximus faucibus. Integer venenatis risus at convallis congue. Curabitur tempus, ipsum nec tincidunt bibendum, libero arcu semper erat, 
+                vel porttitor dolor massa vitae tortor. Sed sed sem metus. Donec vitae nunc malesuada, tempor nisi eget,
+                varius sem. Vivamus pharetra maximus tempor. Fusce justo purus, semper at est tempus, fringilla interdum nunc. 
+                Phasellus ex neque, accumsan vitae volutpat sit amet, congue non ligula. 
+            </p>
+
+            <p> Vestibulum quis arcu massa. Duis porttitor magna sit amet dolor pellentesque, a consectetur est sodales. Donec gravida est at posuere sollicitudin. 
+                Etiam dignissim odio eu nisl tincidunt efficitur. Vestibulum enim magna, varius eu ex eget, euismod vehicula metus. Integer eget metus ut sem consectetur placerat.
+                Donec tincidunt congue ultricies.
+            </p>
+
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris placerat blandit tellus sit amet imperdiet. Suspendisse a nibh eget diam blandit dapibus. 
+                Quisque finibus odio sed libero suscipit mollis. Cras pretium, augue sit amet molestie rhoncus, diam arcu convallis urna, eu pulvinar risus turpis sit amet sem. 
+                Praesent varius nibh quis molestie vulputate. Cras ornare feugiat pharetra. Sed aliquet mollis quam at sagittis. Mauris tempor imperdiet est nec consequat. 
+                Nulla varius dui lectus, in porta nulla varius quis. Vestibulum ac mauris risus. Proin vestibulum tincidunt pellentesque. Nunc molestie nunc urna, quis fringilla erat eleifend sed.
+            </p>
+
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris placerat blandit tellus sit amet imperdiet. Suspendisse a nibh eget diam blandit dapibus. 
+                Quisque finibus odio sed libero suscipit mollis. Cras pretium, augue sit amet molestie rhoncus, diam arcu convallis urna, eu pulvinar risus turpis sit amet sem. 
+                Praesent varius nibh quis molestie vulputate. Cras ornare feugiat pharetra. Sed aliquet mollis quam at sagittis. Mauris tempor imperdiet est nec consequat. 
+                Nulla varius dui lectus, in porta nulla varius quis. Vestibulum ac mauris risus. Proin vestibulum tincidunt pellentesque. Nunc molestie nunc urna, quis fringilla erat eleifend sed.
+            </p>
+
+            <h2>FINAL</h2>
+            <p> Pellentesque maximus erat quis pharetra ultrices. Ut pharetra ex eu convallis consectetur. Nulla sagittis odio enim. Quisque magna mi, rhoncus nec facilisis id, posuere et purus. 
+                Quisque ac commodo turpis, sed porta turpis. Phasellus condimentum, elit ut pharetra accumsan, diam ante posuere nibh, at faucibus felis lorem vel ipsum. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non justo dictum, finibus eros et, egestas lacus. Nam tempor varius ligula id varius. Sed vel rutrum massa, eu ornare risus.  
+            </p>
+        </div>
+
+        <div id="botonCerrar">
+            <button onclick="cerrarTexto()">TANCAR</button>
+        </div>
+
+
+        <script language="javascript">
+            function ventanaCerrar() {
+                let capa = document.getElementById("formatoScroll");
+                let boton = document.getElementById("botonCerrar");
+
+                if (capa.offsetHeight + capa.scrollTop >= capa.scrollHeight) {
+                    boton.style.backgroundColor = "black";
+                    document.getElementsByTagName("button")[0].style.display = "inherit";
+                }
+            }
+
+            function cerrarTexto() {
+                let capa = document.getElementById("formatoScroll");
+                let boton = document.getElementById("botonCerrar");
+
+                capa.style.display = "none";
+                boton.style.backgroundColor = "white";
+                document.getElementsByTagName("button")[0].style.display = "none";
+            }
+        </script>
+
+    </body>
+</html>

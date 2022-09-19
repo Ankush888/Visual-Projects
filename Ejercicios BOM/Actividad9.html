@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio BOM 9 - Ankush Bihal</title>
+        <style>
+            #bordes {
+                width: 210px;
+                height: 210px;
+                border: 3px solid #555;
+                padding: 5px;
+            }
+            p{
+                display: none;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <h1>DWEC_BOM Exercici 9</h1>
+        <p id="resultado"> </p>
+
+
+        <script>
+            var avisoCokkies = confirm("Usamos cookies en este sitio web para mejorar la experiencia del usuario. Aceptas las Cookies???");
+            if (avisoCokkies == true) {
+                var caution = false
+                function setCookie(name, value, expires, path, domain, secure) {
+                    var curCookie = name + "=" + escape(value) +
+                            ((expires) ? "; expires=" + expires.toGMTString() : "") +
+                            ((path) ? "; path=" + path : "") +
+                            ((domain) ? "; domain=" + domain : "") +
+                            ((secure) ? "; secure" : "")
+                    if (!caution || (name + "=" + escape(value)).length <= 4000)
+                        document.cookie = curCookie
+                    else
+                    if (confirm("La cookie no puede pesar mas de 4kb!"))
+                        document.cookie = curCookie
+                }
+                function getCookie(name) {
+                    var prefix = name + "="
+                    var cookieStartIndex = document.cookie.indexOf(prefix)
+                    if (cookieStartIndex == -1)
+                        return null
+                    var cookieEndIndex = document.cookie.indexOf(";", cookieStartIndex + prefix.length)
+                    if (cookieEndIndex == -1)
+                        cookieEndIndex = document.cookie.length
+                    return unescape(document.cookie.substring(cookieStartIndex + prefix.length, cookieEndIndex))
+                }
+                function deleteCookie(name, path, domain) {
+                    if (getCookie(name)) {
+                        document.cookie = name + "=" +
+                                ((path) ? "; path=" + path : "") +
+                                ((domain) ? "; domain=" + domain : "") +
+                                "; expires=Thu, 01-Jan-70 00:00:01 GMT"
+                    }
+                }
+                function fixDate(date) {
+                    var base = new Date(0)
+                    var skew = base.getTime()
+                    if (skew > 0)
+                        date.setTime(date.getTime() - skew)
+                }
+                var now = new Date()
+                fixDate(now)
+                now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000)
+                var visits = getCookie("counter")
+                if (!visits)
+                    visits = 1
+                else
+                    visits = parseInt(visits) + 1
+                setCookie("counter", visits, now)
+                document.write("Esta es tu visita numero: " + visits)
+
+            } else {
+                document.getElementById("resultado").innerHTML = "Usted no ha querido aceptar las Cookies.";
+            }
+        </script>
+
+    </body>
+</html>

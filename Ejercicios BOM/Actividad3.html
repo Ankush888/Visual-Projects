@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" href="imgs/Logo.png">
+        <title>Ejercicio BOM 3 - Ankush Bihal</title>
+    </head>
+
+
+    <body>
+        <h1>DWEC_BOM Exercici 3</h1>
+
+        <script>
+            function crearTitol(titol) {
+                document.write("<h3>" + titol + "</h3>");
+            }
+
+            function llistaPropietats(objecte) {
+                document.write("<ul>")
+
+                for (var i in objecte) {
+                    document.write("<li><strong>" + i + ":</strong> " + objecte[i] + "</li><br>")
+                }
+                document.write("</ul>")
+            }
+
+            crearTitol(window);
+            llistaPropietats(window);
+
+            crearTitol(history);
+            llistaPropietats(history);
+
+            crearTitol(location);
+            llistaPropietats(location);
+
+            crearTitol(navigator);
+            llistaPropietats(navigator);
+
+            crearTitol(screen);
+            llistaPropietats(screen);
+        </script>
+
+    </body>
+</html>
