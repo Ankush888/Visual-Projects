@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 
 <html onclick="processaEvent(this)">
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <link rel="icon" type="image/png" href="imgs/Logo.png">
-        <title>Ejercicio Eventos 3.1 - Ankush Bihal</title>
-    </head>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="icon" type="image/png" href="imgs/Logo.png" />
+    <title>Ejercicio Eventos 3.1 - Ankush Bihal</title>
+  </head>
 
+  <body onclick="processaEvent(this)">
+    <h1>DWEC_Events Exercici 3.1</h1>
+    <h1 onclick="processaEvent(this)">BUBBLING</h1>
+    <h1>DWEC_Events Exercici 3.1</h1>
 
-    <body onclick="processaEvent(this)">
-        <h1>DWEC_Events Exercici 3.1</h1>
-        <h1 onclick="processaEvent(this)">BUBBLING</h1>
-        
-        <script language="javascript">
-            var contador = 0;
-            function processaEvent(objecte) {
-                contador = contador + 1;
-                alert(contador + " " + objecte.tagName);
-            }
-        </script>
-
-    </body>
+    <script language="javascript">
+      var contador = 0;
+      function processaEvent(objecte) {
+        contador = contador + 1;
+        alert(contador + " " + objecte.tagName);
+      }
+    </script>
+  </body>
 </html>
