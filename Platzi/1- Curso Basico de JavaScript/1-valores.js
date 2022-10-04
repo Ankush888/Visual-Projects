@@ -13,7 +13,6 @@ false;
 null; // Valores vacios (Empty values), es como un placeholder (espacio reservado para algun valor) de algún valor faltante.
 
 undefined;
-Hola
 
 /* ================================================================ */
 [
