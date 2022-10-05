@@ -27,8 +27,8 @@ function calcularPromedio(lista) {
 
   function sumarTodosElementos(valorAcumulado, nuevoValor) {
     return valorAcumulado + nuevoValor;
-  }
-  // const ejemplo = (a, b) => a + b;
+  } // const ejemplo = (a, b) => a + b;
+
   // const sumarTodosElementos = (valorAcumulado, nuevoValor) => valorAcumulado + nuevoValor;
   // const sumaLista = lista.reduce((a, b) => a + b);
 
