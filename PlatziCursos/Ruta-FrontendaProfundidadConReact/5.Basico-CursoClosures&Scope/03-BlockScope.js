@@ -1,24 +1,12 @@
-// variables
-
-var a; // declarando
-var b = "b"; // declaramos / asignamos
-b = "bb"; // reasignacion
-var a = "aa"; // redeclaracion
-
-// Global Scope
-var fruit = "Apple"; // global
-console.log(fruit);
-
-function bestFruit() {
-  console.log(fruit);
+function fruits() {
+  if (true) {
+    var fruit1 = "Apple"; // function scope
+    let fruit2 = "Kiwi"; // block scope
+    const fruit3 = "Banana"; // block scope
+    console.log(fruit2);
+    console.log(fruit3);
+  }
+  console.log(fruit1);
 }
 
-bestFruit();
-
-function countries() {
-  country = "Colombia"; // global
-  console.log(country);
-}
-
-countries();
-console.log(country);
+fruits();
